@@ -113,9 +113,7 @@
       <Visible>false</Visible>
     </ImageAsset>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
@@ -125,6 +123,10 @@
     <None Include="Entitlements.plist" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculateViewController.cs" />
+    <Compile Include="CalculateViewController.designer.cs">
+      <DependentUpon>CalculateViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="HistoryTableViewController.cs" />
     <Compile Include="HistoryTableViewController.designer.cs">
       <DependentUpon>HistoryTableViewController.cs</DependentUpon>
@@ -136,14 +138,23 @@
     <Compile Include="SettingsTableViewController.designer.cs">
       <DependentUpon>SettingsTableViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="WaterIntakeViewController.cs" />
     <Compile Include="WaterIntakeViewController.designer.cs">
       <DependentUpon>WaterIntakeViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="WeightViewController.cs" />
+    <Compile Include="WeightViewController.designer.cs">
+      <DependentUpon>WeightViewController.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\water.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\statistics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\settings.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
