@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2412">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="237">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -95,7 +95,7 @@
         </scene>
         <scene sceneID="236">
             <objects>
-                <tabBarController id="237" sceneMemberID="viewController">
+                <tabBarController id="237" sceneMemberID="viewController" storyboardIdentifier="TabVC">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="240">
                         <rect key="frame" x="0.0" y="686" width="414" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -346,7 +346,7 @@
         </scene>
         <scene sceneID="2420">
             <objects>
-                <viewController id="2421" sceneMemberID="viewController" customClass="WeightViewController">
+                <viewController id="2421" sceneMemberID="viewController" customClass="WeightViewController" storyboardIdentifier="WeightVC">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2418"/>
                         <viewControllerLayoutGuide type="bottom" id="2419"/>
@@ -364,7 +364,7 @@
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="2566" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Enter your weight here">
                                 <rect key="frame" x="20" y="170" width="374" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <color key="textColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
                                 <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.37647058823529411" blue="1" alpha="1"/>
@@ -394,8 +394,7 @@
                             <constraint id="2660" firstItem="2566" firstAttribute="top" secondItem="2565" secondAttribute="bottom" constant="30"/>
                             <constraint id="2704" firstItem="2567" firstAttribute="leading" secondItem="2422" secondAttribute="leadingMargin" constant="135"/>
                             <constraint id="2707" firstAttribute="trailingMargin" secondItem="2567" secondAttribute="trailing" constant="135"/>
-                            <constraint id="7543" firstItem="2419" firstAttribute="top" secondItem="2567" secondAttribute="bottom" constant="446"/>
-                            <constraint id="8244" firstItem="2567" firstAttribute="top" secondItem="2566" secondAttribute="bottom" constant="50"/>
+                            <constraint id="10439" firstItem="2567" firstAttribute="top" secondItem="2566" secondAttribute="bottom" constant="50"/>
                         </constraints>
                     </view>
                     <navigationItem title="Weight" id="2562" key="navigationItem"/>
@@ -443,7 +442,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue id="3165" destination="237" kind="showDetail"/>
+                                    <segue id="14606" destination="237" kind="presentation"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -470,8 +469,8 @@
     </scenes>
     <resources>
         <image name="water25.png" width="25" height="25"/>
-        <image name="0.square" catalog="system"/>
-        <image name="clock" catalog="system"/>
         <image name="gear" catalog="system"/>
+        <image name="clock" catalog="system"/>
+        <image name="0.square" catalog="system"/>
     </resources>
 </document>
