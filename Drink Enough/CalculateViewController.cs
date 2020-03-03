@@ -6,6 +6,7 @@ namespace Drink_Enough
 {
     public partial class CalculateViewController : UIViewController
     {
+        public string userData { get; set; }
         public CalculateViewController (IntPtr handle) : base (handle)
         {
         }
@@ -13,7 +14,9 @@ namespace Drink_Enough
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            // Perform any additional setup after loading the view, typically from a nib.
+
+            WaterTxtInput.Text = userData;
+
         }
     }
 }

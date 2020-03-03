@@ -16,10 +16,19 @@ namespace Drink_Enough
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton DoneButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField WaterTxtInput { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (DoneButton != null) {
+                DoneButton.Dispose ();
+                DoneButton = null;
+            }
+
             if (WaterTxtInput != null) {
                 WaterTxtInput.Dispose ();
                 WaterTxtInput = null;

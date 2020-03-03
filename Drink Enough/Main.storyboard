@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="237">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2412">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,7 +27,7 @@
                                     <constraint id="7374" firstAttribute="width" constant="374"/>
                                 </constraints>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1949" translatesAutoresizingMaskIntoConstraints="NO" text="2000 ml" numberOfLines="0.0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1949" translatesAutoresizingMaskIntoConstraints="NO" text="2000" numberOfLines="0.0">
                                 <rect key="frame" x="20" y="250" width="374" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30" weight="heavy"/>
                                 <nil key="textColor"/>
@@ -42,9 +42,9 @@
                                     <navigationItem title="My Water Intake" id="4776"/>
                                 </items>
                             </navigationBar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="6413" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" image="0.square" catalog="system">
-                                <rect key="frame" x="0.0" y="532" width="414" height="154"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor" colorSpace="calibratedRGB" red="0" green="0.47843137254902" blue="1" alpha="1"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="6413" translatesAutoresizingMaskIntoConstraints="NO" image="water.png">
+                                <rect key="frame" x="0.0" y="530" width="414" height="156"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.54117647058823526" green="0.77647058823529413" blue="0.81960784313725488" alpha="1"/>
                                 <color key="tintColor" systemColor="systemBlueColor" colorSpace="calibratedRGB" red="0" green="0.47843137254902" blue="1" alpha="1"/>
                                 <constraints>
                                     <constraint id="7380" firstAttribute="width" constant="414"/>
@@ -52,7 +52,7 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="1950" translatesAutoresizingMaskIntoConstraints="NO" text="DRINK" textAlignment="center">
-                                <rect key="frame" x="100" y="506" width="214" height="57.5"/>
+                                <rect key="frame" x="100" y="326" width="214" height="58"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40" weight="heavy"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="0.333333333333333" alpha="1"/>
@@ -72,21 +72,26 @@
                             <constraint id="4822" firstAttribute="trailingMargin" secondItem="4775" secondAttribute="trailing" constant="-20"/>
                             <constraint id="4826" firstItem="4775" firstAttribute="leading" secondItem="233" secondAttribute="leadingMargin" constant="-20"/>
                             <constraint id="5177" firstItem="4775" firstAttribute="top" secondItem="224" secondAttribute="bottom"/>
-                            <constraint id="7372" firstAttribute="top" secondItem="233" secondAttribute="top" constant="130" firstItem="1948"/>
-                            <constraint id="7373" firstItem="233" firstAttribute="trailing" secondItem="1948" secondAttribute="trailing" constant="20"/>
                             <constraint id="7375" firstAttribute="top" secondItem="233" secondAttribute="top" constant="250" firstItem="1949"/>
-                            <constraint id="7376" firstItem="233" firstAttribute="trailing" secondItem="1949" secondAttribute="trailing" constant="20"/>
-                            <constraint id="7378" firstAttribute="bottom" secondItem="6413" secondAttribute="bottom" constant="48" firstItem="233"/>
-                            <constraint id="7379" firstItem="233" firstAttribute="trailing" secondItem="6413" secondAttribute="trailing"/>
-                            <constraint id="7382" firstAttribute="bottom" secondItem="1950" secondAttribute="bottom" constant="172" firstItem="233"/>
-                            <constraint id="7383" firstItem="233" firstAttribute="trailing" secondItem="1950" secondAttribute="trailing" constant="100"/>
+                            <constraint id="15778" firstItem="225" firstAttribute="top" secondItem="6413" secondAttribute="bottom"/>
+                            <constraint id="15789" firstAttribute="trailingMargin" secondItem="6413" secondAttribute="trailing" constant="-20"/>
+                            <constraint id="15794" firstItem="6413" firstAttribute="leading" secondItem="233" secondAttribute="leadingMargin" constant="-20"/>
+                            <constraint id="17208" firstAttribute="trailingMargin" secondItem="1950" secondAttribute="trailing" constant="80"/>
+                            <constraint id="17213" firstItem="1950" firstAttribute="leading" secondItem="233" secondAttribute="leadingMargin" constant="80"/>
+                            <constraint id="18660" firstItem="1948" firstAttribute="top" secondItem="4775" secondAttribute="bottom" constant="60"/>
+                            <constraint id="18674" firstAttribute="trailingMargin" secondItem="1948" secondAttribute="trailing"/>
+                            <constraint id="18679" firstItem="1948" firstAttribute="leading" secondItem="233" secondAttribute="leadingMargin"/>
+                            <constraint id="18680" firstItem="1949" firstAttribute="top" secondItem="1948" secondAttribute="bottom" constant="90"/>
+                            <constraint id="18745" firstItem="1949" firstAttribute="leading" secondItem="233" secondAttribute="leadingMargin"/>
+                            <constraint id="18750" firstAttribute="trailingMargin" secondItem="1949" secondAttribute="trailing"/>
+                            <constraint id="19251" firstItem="1950" firstAttribute="top" secondItem="1949" secondAttribute="bottom" constant="40"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" id="234" title="Intake" image="water25.png"/>
                     <navigationItem title="WATER INTAKE" id="1092" key="navigationItem"/>
                     <connections>
                         <outlet property="WaterOutputLabel" destination="1949" id="name-outlet-1949"/>
-                        <outlet property="WaterTxtInput" destination="1950" id="name-outlet-1950"/>
+                        <outlet property="DrinkTxtInput" destination="1950" id="name-outlet-1950"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="235" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -110,7 +115,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="241" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1884" y="-116"/>
+            <point key="canvasLocation" x="-1891" y="-113"/>
         </scene>
         <scene sceneID="1181">
             <objects>
@@ -354,23 +359,22 @@
                     <view key="view" contentMode="scaleToFill" id="2422">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2565" translatesAutoresizingMaskIntoConstraints="NO" text="Please enter your weight below. We need it to calculate your daily water intake." numberOfLines="3">
-                                <rect key="frame" x="20" y="92" width="374" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2565" translatesAutoresizingMaskIntoConstraints="NO" text="Please enter your weight below. We need it to calculate your daily water intake. " numberOfLines="3">
+                                <rect key="frame" x="20" y="90" width="374" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="2566" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Enter your weight here">
-                                <rect key="frame" x="20" y="170" width="374" height="34"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="2566" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Please enter your weight here...">
+                                <rect key="frame" x="20" y="192" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <color key="textColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
                                 <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.37647058823529411" blue="1" alpha="1"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2567" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="155" y="254" width="104" height="36"/>
+                                <rect key="frame" x="155" y="276" width="104" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="0.333333333333333" alpha="1"/>
                                 <color key="tintColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
@@ -386,16 +390,18 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint id="2604" firstItem="2565" firstAttribute="top" secondItem="2418" secondAttribute="bottom" constant="22"/>
+                            <constraint id="2604" firstItem="2565" firstAttribute="top" secondItem="2418" secondAttribute="bottom" constant="20"/>
                             <constraint id="2608" firstItem="2565" firstAttribute="leading" secondItem="2422" secondAttribute="leadingMargin"/>
                             <constraint id="2611" firstAttribute="trailingMargin" secondItem="2565" secondAttribute="trailing"/>
                             <constraint id="2652" firstItem="2566" firstAttribute="leading" secondItem="2422" secondAttribute="leadingMargin"/>
-                            <constraint id="2655" firstAttribute="trailingMargin" secondItem="2566" secondAttribute="trailing"/>
-                            <constraint id="2660" firstItem="2566" firstAttribute="top" secondItem="2565" secondAttribute="bottom" constant="30"/>
                             <constraint id="2704" firstItem="2567" firstAttribute="leading" secondItem="2422" secondAttribute="leadingMargin" constant="135"/>
                             <constraint id="2707" firstAttribute="trailingMargin" secondItem="2567" secondAttribute="trailing" constant="135"/>
-                            <constraint id="10439" firstItem="2567" firstAttribute="top" secondItem="2566" secondAttribute="bottom" constant="50"/>
+                            <constraint id="15349" firstAttribute="trailingMargin" secondItem="2566" secondAttribute="trailing"/>
+                            <constraint id="15427" firstItem="2567" firstAttribute="top" secondItem="2566" secondAttribute="bottom" constant="50"/>
+                            <constraint id="15538" firstItem="2419" firstAttribute="top" secondItem="2567" secondAttribute="bottom" constant="424"/>
+                            <constraint id="15680" firstItem="2566" firstAttribute="top" secondItem="2565" secondAttribute="bottom" constant="54"/>
                         </constraints>
+                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.74509803921568629" green="0.92156862745098034" blue="0.9137254901960784" alpha="1"/>
                     </view>
                     <navigationItem title="Weight" id="2562" key="navigationItem"/>
                     <connections>
@@ -417,12 +423,13 @@
                     <view key="view" contentMode="scaleToFill" id="2429">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="2794" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="20" y="192" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <color key="textColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
+                                <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.37647058823529411" blue="1" alpha="1"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2795" translatesAutoresizingMaskIntoConstraints="NO" text="We recommend you to drink the following amount of water every day, which you can, however, modify. " numberOfLines="3">
                                 <rect key="frame" x="20" y="90" width="374" height="72"/>
@@ -456,10 +463,14 @@
                             <constraint id="3023" firstAttribute="trailingMargin" secondItem="2796" secondAttribute="trailing" constant="135"/>
                             <constraint id="3026" firstItem="2796" firstAttribute="leading" secondItem="2429" secondAttribute="leadingMargin" constant="135"/>
                             <constraint id="3027" firstItem="2796" firstAttribute="top" secondItem="2794" secondAttribute="bottom" constant="50"/>
+                            <constraint id="15500" firstItem="2426" firstAttribute="top" secondItem="2796" secondAttribute="bottom" constant="424"/>
                         </constraints>
+                        <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.37647058823529411" blue="1" alpha="1"/>
+                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.74509803921568629" green="0.92156862745098034" blue="0.9137254901960784" alpha="1"/>
                     </view>
                     <connections>
                         <outlet property="WaterTxtInput" destination="2794" id="name-outlet-2794"/>
+                        <outlet property="DoneButton" destination="2796" id="name-outlet-2796"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2430" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -469,8 +480,8 @@
     </scenes>
     <resources>
         <image name="water25.png" width="25" height="25"/>
-        <image name="gear" catalog="system"/>
+        <image name="water.png" width="50" height="50"/>
         <image name="clock" catalog="system"/>
-        <image name="0.square" catalog="system"/>
+        <image name="gear" catalog="system"/>
     </resources>
 </document>

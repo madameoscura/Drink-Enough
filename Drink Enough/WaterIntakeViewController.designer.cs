@@ -16,22 +16,22 @@ namespace Drink_Enough
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel WaterOutputLabel { get; set; }
+        UIKit.UITextField DrinkTxtInput { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField WaterTxtInput { get; set; }
+        UIKit.UILabel WaterOutputLabel { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (DrinkTxtInput != null) {
+                DrinkTxtInput.Dispose ();
+                DrinkTxtInput = null;
+            }
+
             if (WaterOutputLabel != null) {
                 WaterOutputLabel.Dispose ();
                 WaterOutputLabel = null;
-            }
-
-            if (WaterTxtInput != null) {
-                WaterTxtInput.Dispose ();
-                WaterTxtInput = null;
             }
         }
     }

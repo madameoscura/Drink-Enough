@@ -135,6 +135,7 @@
     </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="PickerDataModel.cs" />
     <Compile Include="SceneDelegate.cs" />
     <Compile Include="SettingsTableViewController.cs" />
     <Compile Include="SettingsTableViewController.designer.cs">
@@ -153,13 +154,10 @@
     <BundleResource Include="Resources\water.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\statistics.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\settings.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\water25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\wave.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
