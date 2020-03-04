@@ -10,6 +10,8 @@ namespace Drink_Enough
     {
         JsonHelper jsonHelper = new JsonHelper();
         Dictionary<string, int> jsonDict;
+        private int amountDrank;
+        private int amountToDrink;
 
         public WaterIntakeViewController (IntPtr handle) : base (handle)
         {
@@ -20,7 +22,7 @@ namespace Drink_Enough
             base.ViewDidLoad();
 
             jsonDict = jsonHelper.jsonGetAllData();
-           WaterOutputLabel.Text = jsonDict["amount"].ToString();
+           WaterOutputLabel.Text = jsonDict["amount"].ToString() + " ml";
 
             PickerDataModel<int> waterModel = new PickerDataModel<int>
             {
@@ -59,36 +61,52 @@ namespace Drink_Enough
                 BarStyle = UIBarStyle.BlackTranslucent,
                 Translucent = true
             };
-
+            waterView.BottomAnchor.ConstraintEqualTo(View.BottomAnchor, 30).Active = true;
+            amountDrank = 0;
+          
             var spacer = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace);
             var doneButton = new UIBarButtonItem(UIBarButtonSystemItem.Done, (sender, args) =>
-            {   
+            {
+            amountDrank += waterModel.SelectedItem.Value;
+            if (jsonDict["amount"] >= amountDrank)
+            {
+                amountToDrink = jsonDict["amount"] - amountDrank;
+            }
+            else
+            {
+                amountToDrink = 0;
+            }
+            Console.WriteLine(amountDrank.ToString());
+            Console.WriteLine(amountToDrink.ToString());
+            Console.WriteLine(((View.Bounds.Height - NavBar.Bounds.Height) * amountToDrink / jsonDict["amount"]).ToString());
+
                 DrinkTxtInput.ResignFirstResponder();
-                if (int.Parse(WaterOutputLabel.Text) - waterModel.SelectedItem.Value <= 0)
+                waterView.TopAnchor.ConstraintEqualTo(NavBar.BottomAnchor, (View.Bounds.Height - NavBar.Bounds.Height)
+                    * amountToDrink / jsonDict["amount"]).Active = true;
+                
+                // if (int.Parse(WaterOutputLabel.Text) - waterModel.SelectedItem.Value <= 0)
+                if (amountToDrink <= 0)
                 {
                         GoalReachedOutputLabel.Text = $"I reached my goal of {jsonDict["amount"]} ml! Total amount I drank today:";
-                        WaterOutputLabel.Text = (jsonDict["amount"] + waterModel.SelectedItem.Value).ToString();
-                        var alert = UIAlertController.Create("Congratulations", "You reached your daily drinking goal!", UIAlertControllerStyle.Alert);
+                        // WaterOutputLabel.Text = (jsonDict["amount"] + waterModel.SelectedItem.Value).ToString();
+                        WaterOutputLabel.Text = (amountDrank).ToString() + " ml";
+                    var alert = UIAlertController.Create("Congratulations", "You reached your daily drinking goal!", UIAlertControllerStyle.Alert);
                         alert.AddAction(UIAlertAction.Create("I am a champion", UIAlertActionStyle.Default, null));
                         PresentViewController(alert, true, null);
                 }
-                else if (jsonDict["amount"] < int.Parse(WaterOutputLabel.Text))
+              /*  else if (jsonDict["amount"] < int.Parse(WaterOutputLabel.Text))
                 {
                     GoalReachedOutputLabel.Text = $"I reached my goal of {jsonDict["amount"]} ml! Total amount I drank today:";
                     WaterOutputLabel.Text = Convert.ToString(int.Parse(WaterOutputLabel.Text) + waterModel.SelectedItem.Value);
-                }               
+                }     */          
                 else 
                 {
-                  WaterOutputLabel.Text = Convert.ToString(int.Parse(WaterOutputLabel.Text) - waterModel.SelectedItem.Value);
-                }               
-                
+                  WaterOutputLabel.Text = Convert.ToString(amountToDrink) + " ml";
+                }
             });
-
             toolbar.SetItems(new[] { spacer, doneButton }, true);
             DrinkTxtInput.InputView = waterPicker;
-            DrinkTxtInput.InputAccessoryView = toolbar;  
-            
-            waterImageView.HeightAnchor.ConstraintEqualTo()
+            DrinkTxtInput.InputAccessoryView = toolbar;            
         }       
     }    
 }

@@ -24,11 +24,19 @@ namespace Drink_Enough
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView waterImageView { get; set; }
+        UIKit.UINavigationBar NavBar { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel WaterOutputLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITabBarItem WaterTabBar { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView waterView { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
@@ -42,14 +50,24 @@ namespace Drink_Enough
                 GoalReachedOutputLabel = null;
             }
 
-            if (waterImageView != null) {
-                waterImageView.Dispose ();
-                waterImageView = null;
+            if (NavBar != null) {
+                NavBar.Dispose ();
+                NavBar = null;
             }
 
             if (WaterOutputLabel != null) {
                 WaterOutputLabel.Dispose ();
                 WaterOutputLabel = null;
+            }
+
+            if (WaterTabBar != null) {
+                WaterTabBar.Dispose ();
+                WaterTabBar = null;
+            }
+
+            if (waterView != null) {
+                waterView.Dispose ();
+                waterView = null;
             }
         }
     }

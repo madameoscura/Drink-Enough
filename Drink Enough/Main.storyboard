@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2412">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="237">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,6 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <subviews>
+                            <view contentMode="scaleToFill" id="40667" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" ambiguous="YES">
+                                <rect key="frame" x="0.0" y="477" width="414" height="180"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.54117647058823526" green="0.77647058823529413" blue="0.81960784313725488" alpha="1"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today I still have to drink:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1948" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0.0">
                                 <rect key="frame" x="20" y="130" width="374" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -42,15 +46,6 @@
                                     <navigationItem title="My Water Intake" id="4776"/>
                                 </items>
                             </navigationBar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="6413" translatesAutoresizingMaskIntoConstraints="NO" image="water.png">
-                                <rect key="frame" x="0.0" y="530" width="414" height="156"/>
-                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.54117647058823526" green="0.77647058823529413" blue="0.81960784313725488" alpha="1"/>
-                                <color key="tintColor" systemColor="systemBlueColor" colorSpace="calibratedRGB" red="0" green="0.47843137254902" blue="1" alpha="1"/>
-                                <constraints>
-                                    <constraint id="7380" firstAttribute="width" constant="414"/>
-                                    <constraint id="7381" firstAttribute="height" constant="156"/>
-                                </constraints>
-                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="1950" translatesAutoresizingMaskIntoConstraints="NO" text="DRINK" textAlignment="center">
                                 <rect key="frame" x="100" y="326" width="214" height="58"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40" weight="heavy"/>
@@ -73,9 +68,6 @@
                             <constraint id="4826" firstItem="4775" firstAttribute="leading" secondItem="233" secondAttribute="leadingMargin" constant="-20"/>
                             <constraint id="5177" firstItem="4775" firstAttribute="top" secondItem="224" secondAttribute="bottom"/>
                             <constraint id="7375" firstAttribute="top" secondItem="233" secondAttribute="top" constant="250" firstItem="1949"/>
-                            <constraint id="15778" firstItem="225" firstAttribute="top" secondItem="6413" secondAttribute="bottom"/>
-                            <constraint id="15789" firstAttribute="trailingMargin" secondItem="6413" secondAttribute="trailing" constant="-20"/>
-                            <constraint id="15794" firstItem="6413" firstAttribute="leading" secondItem="233" secondAttribute="leadingMargin" constant="-20"/>
                             <constraint id="17208" firstAttribute="trailingMargin" secondItem="1950" secondAttribute="trailing" constant="80"/>
                             <constraint id="17213" firstItem="1950" firstAttribute="leading" secondItem="233" secondAttribute="leadingMargin" constant="80"/>
                             <constraint id="18660" firstItem="1948" firstAttribute="top" secondItem="4775" secondAttribute="bottom" constant="60"/>
@@ -85,6 +77,8 @@
                             <constraint id="18745" firstItem="1949" firstAttribute="leading" secondItem="233" secondAttribute="leadingMargin"/>
                             <constraint id="18750" firstAttribute="trailingMargin" secondItem="1949" secondAttribute="trailing"/>
                             <constraint id="19251" firstItem="1950" firstAttribute="top" secondItem="1949" secondAttribute="bottom" constant="40"/>
+                            <constraint id="44374" firstItem="40667" firstAttribute="leading" secondItem="233" secondAttribute="leadingMargin" constant="-20"/>
+                            <constraint id="44385" firstAttribute="trailingMargin" secondItem="40667" secondAttribute="trailing" constant="-20"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" id="234" title="Intake" image="water25.png"/>
@@ -93,7 +87,9 @@
                         <outlet property="WaterOutputLabel" destination="1949" id="name-outlet-1949"/>
                         <outlet property="DrinkTxtInput" destination="1950" id="name-outlet-1950"/>
                         <outlet property="GoalReachedOutputLabel" destination="1948" id="name-outlet-1948"/>
-                        <outlet property="waterImageView" destination="6413" id="name-outlet-6413"/>
+                        <outlet property="NavBar" destination="4775" id="name-outlet-4775"/>
+                        <outlet property="waterView" destination="40667" id="name-outlet-40667"/>
+                        <outlet property="WaterTabBar" destination="234" id="name-outlet-234"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="235" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -481,7 +477,6 @@
     </scenes>
     <resources>
         <image name="water25.png" width="25" height="25"/>
-        <image name="water.png" width="50" height="50"/>
         <image name="clock" catalog="system"/>
         <image name="gear" catalog="system"/>
     </resources>
