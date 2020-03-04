@@ -1,12 +1,16 @@
 using CoreGraphics;
 using Foundation;
 using System;
+using System.Collections.Generic;
 using UIKit;
 
 namespace Drink_Enough
 {
     public partial class WaterIntakeViewController : UIViewController
     {
+        JsonHelper jsonHelper = new JsonHelper();
+        Dictionary<string, int> jsonDict;
+
         public WaterIntakeViewController (IntPtr handle) : base (handle)
         {
         }
@@ -15,7 +19,9 @@ namespace Drink_Enough
         {
             base.ViewDidLoad();
 
-           
+            jsonDict = jsonHelper.jsonGetAllData();
+           WaterOutputLabel.Text = jsonDict["amount"].ToString();
+
             PickerDataModel<int> waterModel = new PickerDataModel<int>
             {
                 Items =
@@ -41,6 +47,7 @@ namespace Drink_Enough
             var spacer = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace);
             var doneButton = new UIBarButtonItem(UIBarButtonSystemItem.Done, (sender, args) =>
             {
+                WaterOutputLabel.Text = Convert.ToString(int.Parse(WaterOutputLabel.Text) - waterModel.SelectedItem.Value);
                 DrinkTxtInput.ResignFirstResponder();
             });
 
@@ -48,12 +55,11 @@ namespace Drink_Enough
             DrinkTxtInput.InputView = waterPicker;
             DrinkTxtInput.InputAccessoryView = toolbar;    
             
-            waterModel.ValueChanged += (sender, args) =>
+            /* waterModel.ValueChanged += (sender, args) =>
             {
-                //colorTextField.Text = colorModel.SelectedItem.Name;
-                WaterOutputLabel.Text = Convert.ToString(int.Parse(WaterOutputLabel.Text) - waterModel.SelectedItem.Value);
-               // canvasView.StrokeColor = waterModel.SelectedItem.Value.CGColor;
-            };
+               WaterOutputLabel.Text = Convert.ToString(int.Parse(WaterOutputLabel.Text) - waterModel.SelectedItem.Value);
+
+            }; */
         }
 
       

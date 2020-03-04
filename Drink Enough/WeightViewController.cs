@@ -1,12 +1,14 @@
 using Foundation;
 using System;
+using System.Collections.Generic;
 using UIKit;
 
 namespace Drink_Enough
 {
     public partial class WeightViewController : UIViewController
     {
-       
+        JsonHelper jsonHelper = new JsonHelper();
+        Dictionary<string, int> jsonDict;
         public WeightViewController (IntPtr handle) : base (handle)
         {
         }
@@ -14,7 +16,7 @@ namespace Drink_Enough
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
+            
             NSNotificationCenter.DefaultCenter.AddObserver(
             UITextField.TextFieldTextDidChangeNotification, (notification) =>
             { if (!string.IsNullOrEmpty(WeightTxtInput.Text) && WeightTxtInput.Text.Length > 1)

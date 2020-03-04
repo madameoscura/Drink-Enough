@@ -1,5 +1,6 @@
 using Foundation;
 using System;
+using System.Collections.Generic;
 using UIKit;
 
 namespace Drink_Enough
@@ -10,6 +11,8 @@ namespace Drink_Enough
         public static int mlToDrinkPerKg = 30;
         public int finalAmountToDrink = new int();
         public string calculatedAmount { get; set; }
+        JsonHelper jsonHelper = new JsonHelper();
+        Dictionary<string, int> jsonDict = new Dictionary<string, int>();
 
         public CalculateViewController (IntPtr handle) : base (handle)
         {
@@ -19,6 +22,7 @@ namespace Drink_Enough
         {
             base.ViewDidLoad();
 
+            //jsonHelper.jsonWrite(int.Parse(userWeightInKg));
             calculatedAmount = Convert.ToString(int.Parse(userWeightInKg) * mlToDrinkPerKg);
             WaterTxtInput.Text = calculatedAmount + " ml";
 
@@ -54,8 +58,13 @@ namespace Drink_Enough
 
         private void DoneButton_TouchUpInside(object sender, EventArgs e)
         {
+            
           //  finalAmountToDrink = int.Parse(WaterTxtInput.Text);
             finalAmountToDrink = int.Parse(WaterTxtInput.Text.Remove(WaterTxtInput.Text.Length - 3, 3));
+            jsonDict["amount"] = finalAmountToDrink;
+            jsonDict["weight"] = int.Parse(userWeightInKg);
+            jsonHelper.jsonWrite(jsonDict);
+            Console.WriteLine(finalAmountToDrink);
             Console.WriteLine(finalAmountToDrink);
         }
     }
