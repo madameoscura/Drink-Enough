@@ -14,7 +14,25 @@ namespace Drink_Enough
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            NSNotificationCenter.DefaultCenter.AddObserver(
+            UITextField.TextFieldTextDidChangeNotification, (notification) =>
+            { if (!string.IsNullOrEmpty(WeightTxtInput.Text) && WeightTxtInput.Text.Length > 1)
+                { 
+                 if (WeightTxtInput.Text.Substring(WeightTxtInput.Text.Length - 2) == "kg")
+                 {
+                WeightTxtInput.Text = WeightTxtInput.Text;
+                 }
+                }
+                else
+                {
+                WeightTxtInput.Text = WeightTxtInput.Text + " kg";
+                }
+                var indexToSet = WeightTxtInput.Text.Length - 3;
+                var positionToSet = WeightTxtInput.GetPosition(WeightTxtInput.BeginningOfDocument, indexToSet);
+                WeightTxtInput.SelectedTextRange = WeightTxtInput.GetTextRange(positionToSet, positionToSet);
             
+            });
         }
 
         
@@ -26,10 +44,10 @@ namespace Drink_Enough
                 as CalculateViewController;
 
             if (Controller != null)
-            {
-                //I defined UserData early in my code and 
-                //I have SentData defined in the FriendsTabViewController  
-                Controller.userData = WeightTxtInput.Text;
+            { 
+                Controller.userWeightInKg = WeightTxtInput.Text.Remove(WeightTxtInput.Text.Length - 3, 3);
+
+               
             }
         }
     }
