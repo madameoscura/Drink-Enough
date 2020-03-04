@@ -26,10 +26,26 @@ namespace Drink_Enough
             {
                 Items =
                 {
-                    new NamedValue<int>("200 ml (Glas)", 200),
-                    new NamedValue<int>("500 ml", 500),
+                    new NamedValue<int>("50 ml", 50),
+                    new NamedValue<int>("100 ml", 100),
+                    new NamedValue<int>("150 ml", 150),
+                    new NamedValue<int>("200 ml (glass)", 200),
+                    new NamedValue<int>("250 ml (cup)", 250),
+                    new NamedValue<int>("300 ml", 300),
+                    new NamedValue<int>("350 ml", 350),
+                    new NamedValue<int>("400 ml", 400),
+                    new NamedValue<int>("450 ml", 450),
+                    new NamedValue<int>("500 ml (small bottle)", 500),
                     new NamedValue<int>("600 ml", 600),
                     new NamedValue<int>("700 ml", 700),
+                    new NamedValue<int>("800 ml", 800),
+                    new NamedValue<int>("900 ml", 900),
+                    new NamedValue<int>("1000 ml (bottle)", 1000),
+                    new NamedValue<int>("1100 ml", 1100),
+                    new NamedValue<int>("1200 ml", 1200),
+                    new NamedValue<int>("1300 ml", 1300),
+                    new NamedValue<int>("1400 ml", 1400),
+                    new NamedValue<int>("1500 ml (big bottle)", 1500)
                 }
             };
 
@@ -46,24 +62,33 @@ namespace Drink_Enough
 
             var spacer = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace);
             var doneButton = new UIBarButtonItem(UIBarButtonSystemItem.Done, (sender, args) =>
-            {
-                WaterOutputLabel.Text = Convert.ToString(int.Parse(WaterOutputLabel.Text) - waterModel.SelectedItem.Value);
+            {   
                 DrinkTxtInput.ResignFirstResponder();
+                if (int.Parse(WaterOutputLabel.Text) - waterModel.SelectedItem.Value <= 0)
+                {
+                        GoalReachedOutputLabel.Text = $"I reached my goal of {jsonDict["amount"]} ml! Total amount I drank today:";
+                        WaterOutputLabel.Text = (jsonDict["amount"] + waterModel.SelectedItem.Value).ToString();
+                        var alert = UIAlertController.Create("Congratulations", "You reached your daily drinking goal!", UIAlertControllerStyle.Alert);
+                        alert.AddAction(UIAlertAction.Create("I am a champion", UIAlertActionStyle.Default, null));
+                        PresentViewController(alert, true, null);
+                }
+                else if (jsonDict["amount"] < int.Parse(WaterOutputLabel.Text))
+                {
+                    GoalReachedOutputLabel.Text = $"I reached my goal of {jsonDict["amount"]} ml! Total amount I drank today:";
+                    WaterOutputLabel.Text = Convert.ToString(int.Parse(WaterOutputLabel.Text) + waterModel.SelectedItem.Value);
+                }               
+                else 
+                {
+                  WaterOutputLabel.Text = Convert.ToString(int.Parse(WaterOutputLabel.Text) - waterModel.SelectedItem.Value);
+                }               
+                
             });
 
             toolbar.SetItems(new[] { spacer, doneButton }, true);
             DrinkTxtInput.InputView = waterPicker;
-            DrinkTxtInput.InputAccessoryView = toolbar;    
+            DrinkTxtInput.InputAccessoryView = toolbar;  
             
-            /* waterModel.ValueChanged += (sender, args) =>
-            {
-               WaterOutputLabel.Text = Convert.ToString(int.Parse(WaterOutputLabel.Text) - waterModel.SelectedItem.Value);
-
-            }; */
-        }
-
-      
-       
-}
-    
+            waterImageView.HeightAnchor.ConstraintEqualTo()
+        }       
+    }    
 }

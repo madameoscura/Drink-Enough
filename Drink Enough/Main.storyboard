@@ -92,6 +92,8 @@
                     <connections>
                         <outlet property="WaterOutputLabel" destination="1949" id="name-outlet-1949"/>
                         <outlet property="DrinkTxtInput" destination="1950" id="name-outlet-1950"/>
+                        <outlet property="GoalReachedOutputLabel" destination="1948" id="name-outlet-1948"/>
+                        <outlet property="waterImageView" destination="6413" id="name-outlet-6413"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="235" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -214,7 +216,7 @@
                             </tableViewSection>
                             <tableViewSection id="8846" headerTitle="General">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8847" accessoryType="disclosureIndicator" style="IBUITableViewCellStyleValue1" textLabel="9466" detailTextLabel="9467">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8847" accessoryType="disclosureIndicator" style="IBUITableViewCellStyleValue1" textLabel="9466" detailTextLabel="9467" tag="0.0">
                                         <rect key="frame" x="0.0" y="188" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8847" id="8848">
@@ -248,7 +250,6 @@
                                                     <rect key="frame" x="20" y="0.0" width="355" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
