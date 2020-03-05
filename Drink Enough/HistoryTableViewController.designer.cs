@@ -14,8 +14,16 @@ namespace Drink_Enough
     [Register ("HistoryTableViewController")]
     partial class HistoryTableViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView HistoryTableView { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (HistoryTableView != null) {
+                HistoryTableView.Dispose ();
+                HistoryTableView = null;
+            }
         }
     }
 }
