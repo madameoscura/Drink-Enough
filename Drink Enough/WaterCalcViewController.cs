@@ -21,24 +21,12 @@ namespace Drink_Enough
         {
             base.ViewDidLoad();
 
-            NSNotificationCenter.DefaultCenter.AddObserver(
-            UITextField.TextFieldTextDidChangeNotification, (notification) =>
-            {
-                if (!string.IsNullOrEmpty(WeightInput.Text) && WeightInput.Text.Length > 1)
-                {
-                    if (WeightInput.Text.Substring(WeightInput.Text.Length - 2) == "kg")
-                    {
-                        WeightInput.Text = WeightInput.Text;
-                    }
-                }
-                else
-                {
-                    WeightInput.Text = WeightInput.Text + " kg";
-                }
+           NSNotificationCenter.DefaultCenter.AddObserver(
+            UITextField.TextDidBeginEditingNotification, (notification) => {
+                WeightInput.Text = " kg";
                 var indexToSet = WeightInput.Text.Length - 3;
                 var positionToSet = WeightInput.GetPosition(WeightInput.BeginningOfDocument, indexToSet);
                 WeightInput.SelectedTextRange = WeightInput.GetTextRange(positionToSet, positionToSet);
-             
             });
 
             CalcButton.TouchUpInside += CalcButton_TouchUpInside;            
@@ -46,7 +34,7 @@ namespace Drink_Enough
 
         private void CalcButton_TouchUpInside(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(WeightInput.Text))
+            if ((!string.IsNullOrEmpty(WeightInput.Text)) && (WeightInput.Text != (" kg")))
             {
             WeightInput.ResignFirstResponder();
             calcWeightInKg = WeightInput.Text.Remove(WeightInput.Text.Length - 3, 3);
