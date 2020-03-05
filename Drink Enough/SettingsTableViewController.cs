@@ -39,7 +39,7 @@ namespace Drink_Enough
                     EditTask.Text = jsonDict["amount"].ToString();
                 });
 
-                alertController.AddAction(UIAlertAction.Create("OK",
+                alertController.AddAction(UIAlertAction.Create("Update",
                     UIAlertActionStyle.Default,
                     onClick =>
                     {

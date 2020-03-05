@@ -115,7 +115,7 @@ namespace Drink_Enough
             base.ViewWillAppear(animated);
 
             jsonDict = jsonHelper.jsonGetAllData();
-            WaterOutputLabel.Text = jsonDict["amount"].ToString() + " ml";
+            WaterOutputLabel.Text = (jsonDict["amount"] - amountDrank).ToString() + " ml";
         }
     }    
 }

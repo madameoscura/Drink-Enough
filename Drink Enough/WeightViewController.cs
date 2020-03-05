@@ -42,8 +42,7 @@ namespace Drink_Enough
         {
             base.PrepareForSegue(segue, sender);
 
-            var Controller = segue.DestinationViewController
-                as CalculateViewController;
+            var Controller = segue.DestinationViewController as CalculateViewController;
 
             if (Controller != null)
             { 
