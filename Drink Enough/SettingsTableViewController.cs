@@ -51,12 +51,7 @@ namespace Drink_Enough
 
                 PresentViewController(alertController, true, null);
                 #endregion
-            }
-            if (indexPath.Section == 0 && indexPath.Row == 1)
-            {
-              //  WaterCalculatorViewController waterCalculatorViewController = this.Storyboard.InstantiateViewController("WaterCalculatorViewController") as WaterCalculatorViewController;
-               // this.NavigationController.PushViewController(waterCalculatorViewController, true);
-            }
+            }            
         }
     }
 }

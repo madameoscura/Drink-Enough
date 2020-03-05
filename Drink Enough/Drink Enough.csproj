@@ -167,5 +167,11 @@
   <ItemGroup>
     <BundleResource Include="Resources\wave.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\waterglass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\waterglasses.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
