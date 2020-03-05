@@ -63,25 +63,6 @@ namespace Drink_Enough
             }
         }
 
-     /*   public void createJson()
-        {
-            JArray array = new JArray();
-            JObject obj = new JObject();
-
-            obj["amounts:"] = array;
-
-            //Ausgabe im Dokument
-            /*  {
-                  "amounts:" 
-                      [
-                      amountObjekt 1
-                      amountObjekt 2
-                      ]
-              } 
-        } */
-
-   
-
         public void deleteAllamounts()
         {         
             //Datei löschen, wenn vorhanden

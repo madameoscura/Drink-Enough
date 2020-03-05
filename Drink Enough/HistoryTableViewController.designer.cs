@@ -14,5 +14,8 @@ namespace Drink_Enough
     [Register ("HistoryTableViewController")]
     partial class HistoryTableViewController
     {
+        void ReleaseDesignerOutlets ()
+        {
+        }
     }
 }

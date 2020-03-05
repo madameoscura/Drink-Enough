@@ -145,6 +145,10 @@
     <Compile Include="SettingsTableViewController.designer.cs">
       <DependentUpon>SettingsTableViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="WaterCalcViewController.cs" />
+    <Compile Include="WaterCalcViewController.designer.cs">
+      <DependentUpon>WaterCalcViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="WaterIntakeViewController.cs" />
     <Compile Include="WaterIntakeViewController.designer.cs">
       <DependentUpon>WaterIntakeViewController.cs</DependentUpon>

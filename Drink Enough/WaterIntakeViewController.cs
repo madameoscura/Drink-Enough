@@ -21,8 +21,9 @@ namespace Drink_Enough
         {
             base.ViewDidLoad();
 
-            jsonDict = jsonHelper.jsonGetAllData();
+           jsonDict = jsonHelper.jsonGetAllData();
            WaterOutputLabel.Text = jsonDict["amount"].ToString() + " ml";
+            DrinkTxtInput.SelectedTextRange = null;
 
             PickerDataModel<int> waterModel = new PickerDataModel<int>
             {
@@ -61,7 +62,7 @@ namespace Drink_Enough
                 BarStyle = UIBarStyle.BlackTranslucent,
                 Translucent = true
             };
-            waterView.BottomAnchor.ConstraintEqualTo(View.BottomAnchor, 30).Active = true;
+
             amountDrank = 0;
           
             var spacer = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace);
@@ -107,6 +108,14 @@ namespace Drink_Enough
             toolbar.SetItems(new[] { spacer, doneButton }, true);
             DrinkTxtInput.InputView = waterPicker;
             DrinkTxtInput.InputAccessoryView = toolbar;            
-        }       
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+            jsonDict = jsonHelper.jsonGetAllData();
+            WaterOutputLabel.Text = jsonDict["amount"].ToString() + " ml";
+        }
     }    
 }

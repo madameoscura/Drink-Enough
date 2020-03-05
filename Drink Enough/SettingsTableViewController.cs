@@ -1,11 +1,15 @@
 using Foundation;
 using System;
+using System.Collections.Generic;
 using UIKit;
 
 namespace Drink_Enough
 {
     public partial class SettingsTableViewController : UITableViewController
     {
+        JsonHelper jsonHelper = new JsonHelper();
+        Dictionary<string, int> jsonDict;
+
         public SettingsTableViewController (IntPtr handle) : base (handle)
         {
         }
@@ -13,7 +17,46 @@ namespace Drink_Enough
             public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            // Perform any additional setup after loading the view, typically from a nib.
+            //settingsView.Source = new TableSource();
+            
+    }
+
+        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+        {
+           // base.RowSelected(tableView, indexPath);
+
+            if (indexPath.Section == 0 && indexPath.Row == 0)
+            {
+                #region AlertDialog mit UIAlertController
+
+                UIAlertController alertController = UIAlertController.Create("Daily water intake", "Please change your intake to a new amount (ml).", UIAlertControllerStyle.Alert);
+                UITextField EditTask = null;
+
+                alertController.AddTextField(EditTaskTxt =>
+                {
+                    EditTask = EditTaskTxt;
+                    jsonDict = jsonHelper.jsonGetAllData();
+                    EditTask.Text = jsonDict["amount"].ToString();
+                });
+
+                alertController.AddAction(UIAlertAction.Create("OK",
+                    UIAlertActionStyle.Default,
+                    onClick =>
+                    {
+                        jsonDict["amount"] = int.Parse(EditTask.Text);
+                        jsonHelper.jsonWrite(jsonDict);
+                        Console.WriteLine(jsonDict.Values);
+                    })); 
+                alertController.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, null));
+
+                PresentViewController(alertController, true, null);
+                #endregion
+            }
+            if (indexPath.Section == 0 && indexPath.Row == 1)
+            {
+              //  WaterCalculatorViewController waterCalculatorViewController = this.Storyboard.InstantiateViewController("WaterCalculatorViewController") as WaterCalculatorViewController;
+               // this.NavigationController.PushViewController(waterCalculatorViewController, true);
+            }
         }
     }
 }

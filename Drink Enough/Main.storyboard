@@ -19,7 +19,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="40667" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" ambiguous="YES">
-                                <rect key="frame" x="0.0" y="477" width="414" height="180"/>
+                                <rect key="frame" x="0.0" y="477" width="414" height="209"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.54117647058823526" green="0.77647058823529413" blue="0.81960784313725488" alpha="1"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today I still have to drink:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1948" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0.0">
@@ -31,7 +31,7 @@
                                     <constraint id="7374" firstAttribute="width" constant="374"/>
                                 </constraints>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1949" translatesAutoresizingMaskIntoConstraints="NO" text="2000" numberOfLines="0.0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1949" translatesAutoresizingMaskIntoConstraints="NO" text="2000" numberOfLines="0.0" adjustsFontForContentSizeCategory="YES">
                                 <rect key="frame" x="20" y="250" width="374" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30" weight="heavy"/>
                                 <nil key="textColor"/>
@@ -51,7 +51,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="40" weight="heavy"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="0.333333333333333" alpha="1"/>
-                                <color key="tintColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
+                                <color key="tintColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="0" alpha="0"/>
                                 <color key="textColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
@@ -67,18 +67,19 @@
                             <constraint id="4822" firstAttribute="trailingMargin" secondItem="4775" secondAttribute="trailing" constant="-20"/>
                             <constraint id="4826" firstItem="4775" firstAttribute="leading" secondItem="233" secondAttribute="leadingMargin" constant="-20"/>
                             <constraint id="5177" firstItem="4775" firstAttribute="top" secondItem="224" secondAttribute="bottom"/>
-                            <constraint id="7375" firstAttribute="top" secondItem="233" secondAttribute="top" constant="250" firstItem="1949"/>
                             <constraint id="17208" firstAttribute="trailingMargin" secondItem="1950" secondAttribute="trailing" constant="80"/>
                             <constraint id="17213" firstItem="1950" firstAttribute="leading" secondItem="233" secondAttribute="leadingMargin" constant="80"/>
                             <constraint id="18660" firstItem="1948" firstAttribute="top" secondItem="4775" secondAttribute="bottom" constant="60"/>
                             <constraint id="18674" firstAttribute="trailingMargin" secondItem="1948" secondAttribute="trailing"/>
                             <constraint id="18679" firstItem="1948" firstAttribute="leading" secondItem="233" secondAttribute="leadingMargin"/>
-                            <constraint id="18680" firstItem="1949" firstAttribute="top" secondItem="1948" secondAttribute="bottom" constant="90"/>
                             <constraint id="18745" firstItem="1949" firstAttribute="leading" secondItem="233" secondAttribute="leadingMargin"/>
                             <constraint id="18750" firstAttribute="trailingMargin" secondItem="1949" secondAttribute="trailing"/>
-                            <constraint id="19251" firstItem="1950" firstAttribute="top" secondItem="1949" secondAttribute="bottom" constant="40"/>
                             <constraint id="44374" firstItem="40667" firstAttribute="leading" secondItem="233" secondAttribute="leadingMargin" constant="-20"/>
                             <constraint id="44385" firstAttribute="trailingMargin" secondItem="40667" secondAttribute="trailing" constant="-20"/>
+                            <constraint id="53581" firstItem="225" firstAttribute="top" secondItem="40667" secondAttribute="bottom"/>
+                            <constraint id="64692" firstAttribute="bottomMargin" secondItem="1950" secondAttribute="bottom" constant="302"/>
+                            <constraint id="65314" firstAttribute="bottomMargin" secondItem="1949" secondAttribute="bottom" constant="400"/>
+                            <constraint id="65808" firstItem="1949" firstAttribute="top" secondItem="1948" secondAttribute="bottom" constant="90"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" id="234" title="Intake" image="water25.png"/>
@@ -108,7 +109,7 @@
                     <connections>
                         <segue id="3565" destination="232" kind="relationship" relationship="viewControllers"/>
                         <segue id="3637" destination="1182" kind="relationship" relationship="viewControllers"/>
-                        <segue id="3741" destination="1293" kind="relationship" relationship="viewControllers"/>
+                        <segue id="66932" destination="66179" kind="relationship" relationship="viewControllers"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="241" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -147,6 +148,9 @@
                     <navigationItem title="HISTORY" id="1287" key="navigationItem"/>
                     <tabBarItem key="tabBarItem" title="History" id="3636" image="clock" catalog="system"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="1183" id="name-outlet-1183"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1188" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -163,18 +167,11 @@
                             <outlet property="dataSource" destination="1293" id="1295"/>
                             <outlet property="delegate" destination="1293" id="1296"/>
                         </connections>
-                        <navigationBar contentMode="scaleToFill" id="4773" key="tableHeaderView">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Settings" id="4774"/>
-                            </items>
-                        </navigationBar>
                         <sections>
                             <tableViewSection headerTitle="My information" id="8839">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="8840" accessoryType="disclosureIndicator" style="IBUITableViewCellStyleDefault" textLabel="9457" detailTextLabel="9456">
-                                        <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8840" id="8841">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
@@ -192,7 +189,7 @@
                                         <inset key="separatorInset" minX="13" minY="0.0" maxX="2" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8842" accessoryType="disclosureIndicator" style="IBUITableViewCellStyleDefault" textLabel="9460" detailTextLabel="9459">
-                                        <rect key="frame" x="0.0" y="116" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8842" id="8843">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
@@ -207,13 +204,16 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue id="67463" destination="67355" kind="show"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="8846" headerTitle="General">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8847" accessoryType="disclosureIndicator" style="IBUITableViewCellStyleValue1" textLabel="9466" detailTextLabel="9467" tag="0.0">
-                                        <rect key="frame" x="0.0" y="188" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="144" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8847" id="8848">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
@@ -236,7 +236,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8849" accessoryType="disclosureIndicator" style="IBUITableViewCellStyleDefault" textLabel="9468" detailTextLabel="9465">
-                                        <rect key="frame" x="0.0" y="232" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="188" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8849" id="8850">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
@@ -256,7 +256,7 @@
                             <tableViewSection headerTitle="Notifications" id="9149">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="9150" accessoryType="disclosureIndicator" style="IBUITableViewCellStyleValue1" textLabel="9482" detailTextLabel="9483">
-                                        <rect key="frame" x="0.0" y="304" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="260" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9150" id="9151">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
@@ -279,7 +279,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="9152" accessoryType="disclosureIndicator" style="IBUITableViewCellStyleValue1" textLabel="9479" detailTextLabel="9480">
-                                        <rect key="frame" x="0.0" y="348" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="304" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9152" id="9153">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
@@ -302,7 +302,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="9154" accessoryType="disclosureIndicator" style="IBUITableViewCellStyleDefault" textLabel="9474" detailTextLabel="9473">
-                                        <rect key="frame" x="0.0" y="392" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="348" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9154" id="9155">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
@@ -322,10 +322,14 @@
                             </tableViewSection>
                         </sections>
                     </tableView>
-                    <navigationItem title="SETTINGS" id="1503" key="navigationItem"/>
+                    <navigationItem title="Settings" id="1503" key="navigationItem"/>
                     <tabBarItem key="tabBarItem" title="Settings" id="3740" image="gear" catalog="system"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections/>
+                    <connections>
+                        <outlet property="settingsView" destination="1294" id="name-outlet-1294"/>
+                        <outlet property="dailyWaterInTakeCell" destination="9457" id="name-outlet-9457"/>
+                        <outlet property="waterCalculatorCell" destination="8842" id="name-outlet-8842"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1299" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -473,6 +477,144 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2430" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2481" y="-109"/>
+        </scene>
+        <scene sceneID="57405">
+            <objects>
+                <viewController id="57406" sceneMemberID="viewController" customClass="WaterCalculatorViewController" storyboardIdentifier="WaterCalculatorViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="57417"/>
+                        <viewControllerLayoutGuide type="bottom" id="57426"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="57412">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="60328" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="155" y="229.5" width="104" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="0.333333333333333" alpha="1"/>
+                                <color key="tintColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
+                                <state key="normal" title="Calculate"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint id="62109" firstItem="59134" firstAttribute="top" secondItem="57417" secondAttribute="bottom" constant="50"/>
+                            <constraint id="62263" firstItem="60328" firstAttribute="leading" secondItem="57412" secondAttribute="leadingMargin" constant="135"/>
+                            <constraint id="62268" firstAttribute="trailingMargin" secondItem="60328" secondAttribute="trailing" constant="135"/>
+                        </constraints>
+                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.74509803921568629" green="0.92156862745098034" blue="0.9137254901960784" alpha="1"/>
+                    </view>
+                    <navigationItem title="Water Intake Calculator" id="57411" key="navigationItem"/>
+                    <connections>
+                        <outlet property="CalculateButton" destination="60328" id="name-outlet-60328"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="57428" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-784" y="985"/>
+        </scene>
+        <scene sceneID="66178">
+            <objects>
+                <navigationController id="66179" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="66181">
+                        <rect key="frame" x="0.0" y="20" width="414" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <tabBarItem key="tabBarItem" title="Item" id="66858"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue id="67327" destination="1293" kind="relationship" relationship="rootViewController"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="66182" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1818" y="1027"/>
+        </scene>
+        <scene sceneID="67354">
+            <objects>
+                <viewController id="67355" sceneMemberID="viewController" customClass="WaterCalcViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="67352"/>
+                        <viewControllerLayoutGuide type="bottom" id="67353"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="67356">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.74509803921568629" green="0.92156862745098034" blue="0.9137254901960784" alpha="1"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My weight:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="67465" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="130" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="67466" translatesAutoresizingMaskIntoConstraints="NO" placeholder=" kg" textAlignment="center" misplaced="YES" ambiguous="YES">
+                                <rect key="frame" x="20" y="180.5" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="67467" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" ambiguous="YES">
+                                <rect key="frame" x="155" y="254.5" width="104" height="36"/>
+                                <color key="tintColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
+                                <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="0.333333333333333" alpha="1"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Calculate"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommended water intake:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="67469" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="20" y="330.5" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="67842" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="382" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
+                                <constraints>
+                                    <constraint id="67995" firstAttribute="height" constant="34"/>
+                                </constraints>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint id="67524" firstItem="67465" firstAttribute="top" secondItem="67352" secondAttribute="bottom" constant="60"/>
+                            <constraint id="67530" firstItem="67465" firstAttribute="leading" secondItem="67356" secondAttribute="leadingMargin"/>
+                            <constraint id="67535" firstAttribute="trailingMargin" secondItem="67465" secondAttribute="trailing"/>
+                            <constraint id="67598" firstItem="67466" firstAttribute="top" secondItem="67465" secondAttribute="bottom" constant="30"/>
+                            <constraint id="67608" firstItem="67466" firstAttribute="leading" secondItem="67356" secondAttribute="leadingMargin"/>
+                            <constraint id="67613" firstAttribute="trailingMargin" secondItem="67466" secondAttribute="trailing"/>
+                            <constraint id="67677" firstItem="67467" firstAttribute="top" secondItem="67466" secondAttribute="bottom" constant="40"/>
+                            <constraint id="67686" firstItem="67467" firstAttribute="leading" secondItem="67356" secondAttribute="leadingMargin" constant="135"/>
+                            <constraint id="67691" firstAttribute="trailingMargin" secondItem="67467" secondAttribute="trailing" constant="135"/>
+                            <constraint id="67756" firstItem="67469" firstAttribute="top" secondItem="67467" secondAttribute="bottom" constant="40"/>
+                            <constraint id="67764" firstItem="67469" firstAttribute="leading" secondItem="67356" secondAttribute="leadingMargin"/>
+                            <constraint id="67769" firstAttribute="trailingMargin" secondItem="67469" secondAttribute="trailing"/>
+                            <constraint id="67903" firstItem="67842" firstAttribute="leading" secondItem="67356" secondAttribute="leadingMargin"/>
+                            <constraint id="67908" firstAttribute="trailingMargin" secondItem="67842" secondAttribute="trailing"/>
+                            <constraint id="67974" firstItem="67842" firstAttribute="top" secondItem="67469" secondAttribute="bottom" constant="30"/>
+                            <constraint id="68000" firstItem="67353" firstAttribute="top" secondItem="67842" secondAttribute="bottom" constant="270"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="CalcButton" destination="67467" id="name-outlet-67467"/>
+                        <outlet property="WeightInput" destination="67466" id="name-outlet-67466"/>
+                        <outlet property="WaterOuputLabel" destination="67842" id="name-outlet-67842"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="67357" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-607" y="1025"/>
         </scene>
     </scenes>
     <resources>
