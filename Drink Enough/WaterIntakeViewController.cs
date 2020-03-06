@@ -23,6 +23,7 @@ namespace Drink_Enough
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
             //Changes for HistoryVC           
             drink = utility.compareObjects(DBHelper.getLastDrink());
 

@@ -20,13 +20,14 @@ namespace Drink_Enough
             base.ViewDidLoad();
             dbHelper.createDB();
 
-            Drink olddrink = new Drink()
+             Drink olddrink = new Drink()
             {
                 AmountDrank = 1400,
                 DrinkingGoal = 3000,
                 CreateDate = new DateTime(2020,3,5)
             };
-            dbHelper.insertDrink(olddrink);
+            dbHelper.insertDrink(olddrink); 
+
             //Add observer to include "kg" behind numbers inserted
             NSNotificationCenter.DefaultCenter.AddObserver(
             UITextField.TextFieldTextDidChangeNotification, (notification) =>
@@ -34,7 +35,7 @@ namespace Drink_Enough
                 { 
                  if (WeightTxtInput.Text.Substring(WeightTxtInput.Text.Length - 2) == "kg")
                  {
-                WeightTxtInput.Text = WeightTxtInput.Text;
+                     WeightTxtInput.Text = WeightTxtInput.Text;
                  }
                 }
                 else

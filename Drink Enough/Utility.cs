@@ -14,7 +14,7 @@ namespace Drink_Enough
 
         public Drink compareObjects(Drink drink)
         {
-            DateTime currentDate = DateTime.Now;
+            DateTime currentDate = DateTime.Now.Date;
             if(drink.CreateDate == currentDate)
             {
                 return drink;
