@@ -53,12 +53,25 @@ namespace Drink_Enough
             db.Close();
         }
 
-        public Drink getDrink(int id)
+        public Drink getDrink(DateTime date)
         {
             Drink drink = new Drink();
             var db = new SQLiteConnection(dbPath);
-            //db.Query<Drink>("SELECT * FROM Drink WHERE _id = ?", id);
-            drink = db.Get<Drink>(id);
+            drink = db.Query<Drink>("SELECT * FROM Drink CreateDate = ?", date)[0];
+            //drink = db.Get<Drink>(id);
+            db.Close();
+            return drink;
+        }
+
+        public Drink getLastDrink()
+        {
+            Drink drink = new Drink();
+            var db = new SQLiteConnection(dbPath);
+            if (db.Query<Drink>("SELECT * FROM Drink ORDER BY CreateDate DESC LIMIT 1").Count > 0)
+            {
+                drink = db.Query<Drink>("SELECT * FROM Drink ORDER BY CreateDate DESC LIMIT 1")[0];
+            }
+            
             db.Close();
             return drink;
         }

@@ -22,6 +22,7 @@ namespace Drink_Enough
 
     class PickerDataModel<A> : UIPickerViewModel
     {
+        //set up model to use in PickerView in WaterIntakeVC
         public event EventHandler<EventArgs> ValueChanged;
         int SelectedIndex;
         public IList<NamedValue<A>> Items { private set; get; }

@@ -18,8 +18,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DRING ENOUGH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="553" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="40" y="188" width="313" height="55"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DRINK ENOUGH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="553" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="40" y="188" width="334" height="55"/>
                                 <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="37"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -47,7 +47,6 @@
                         <constraints>
                             <constraint id="12502" firstItem="553" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="168"/>
                             <constraint id="12506" firstItem="553" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="20"/>
-                            <constraint id="12509" firstAttribute="trailingMargin" secondItem="553" secondAttribute="trailing" constant="20"/>
                             <constraint id="12558" firstAttribute="trailingMargin" secondItem="643" secondAttribute="trailing" constant="20"/>
                             <constraint id="12561" firstItem="643" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="20"/>
                             <constraint id="12732" firstAttribute="trailingMargin" secondItem="5114" secondAttribute="trailing" constant="8"/>
@@ -56,6 +55,7 @@
                             <constraint id="12748" firstItem="5114" firstAttribute="top" secondItem="553" secondAttribute="bottom" constant="111"/>
                             <constraint id="12886" firstAttribute="bottomMargin" secondItem="643" secondAttribute="bottom" constant="400"/>
                             <constraint id="13342" firstItem="643" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="249"/>
+                            <constraint id="13791" firstAttribute="trailingMargin" secondItem="553" secondAttribute="trailing" constant="20"/>
                         </constraints>
                     </view>
                 </viewController>

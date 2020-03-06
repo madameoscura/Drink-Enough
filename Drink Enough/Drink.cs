@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 
 using Foundation;
+using SQLite;
 using UIKit;
 
 namespace Drink_Enough
 {
     class Drink
     {
+        [PrimaryKey, AutoIncrement, Column("_id")]
+        public int ID { get; set; }
         public int Weight { get; set; }
         public int DrinkingGoal { get; set; }
         public int AmountDrank { get; set; }

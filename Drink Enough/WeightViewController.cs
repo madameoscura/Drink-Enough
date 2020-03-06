@@ -7,6 +7,8 @@ namespace Drink_Enough
 {
     public partial class WeightViewController : UIViewController
     {
+
+        DBHelper dbHelper = new DBHelper();
         JsonHelper jsonHelper = new JsonHelper();
         Dictionary<string, int> jsonDict;
         public WeightViewController (IntPtr handle) : base (handle)
@@ -16,7 +18,16 @@ namespace Drink_Enough
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            
+            dbHelper.createDB();
+
+            Drink olddrink = new Drink()
+            {
+                AmountDrank = 1400,
+                DrinkingGoal = 3000,
+                CreateDate = new DateTime(2020,3,5)
+            };
+            dbHelper.insertDrink(olddrink);
+            //Add observer to include "kg" behind numbers inserted
             NSNotificationCenter.DefaultCenter.AddObserver(
             UITextField.TextFieldTextDidChangeNotification, (notification) =>
             { if (!string.IsNullOrEmpty(WeightTxtInput.Text) && WeightTxtInput.Text.Length > 1)
@@ -38,6 +49,7 @@ namespace Drink_Enough
         }
 
         
+        //Give user weight to CalculateVC
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
         {
             base.PrepareForSegue(segue, sender);

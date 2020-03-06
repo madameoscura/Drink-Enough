@@ -14,36 +14,35 @@ namespace Drink_Enough
         {
         }
 
-            public override void ViewDidLoad()
+        public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            //settingsView.Source = new TableSource();
             
-    }
+        }
 
+        //what should happen when specific row in tableview is selected
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-           // base.RowSelected(tableView, indexPath);
-
+           //show alertview when first cell is pressed to adjust drinking goal
             if (indexPath.Section == 0 && indexPath.Row == 0)
             {
                 #region AlertDialog mit UIAlertController
 
                 UIAlertController alertController = UIAlertController.Create("Daily water intake", "Please change your intake to a new amount (ml).", UIAlertControllerStyle.Alert);
-                UITextField EditTask = null;
+                UITextField EditWaterIntake = null;
 
-                alertController.AddTextField(EditTaskTxt =>
+                alertController.AddTextField(EditWaterIntakeTxt =>
                 {
-                    EditTask = EditTaskTxt;
+                    EditWaterIntake = EditWaterIntakeTxt;
                     jsonDict = jsonHelper.jsonGetAllData();
-                    EditTask.Text = jsonDict["amount"].ToString();
+                    EditWaterIntake.Text = jsonDict["amount"].ToString();
                 });
 
                 alertController.AddAction(UIAlertAction.Create("Update",
                     UIAlertActionStyle.Default,
                     onClick =>
                     {
-                        jsonDict["amount"] = int.Parse(EditTask.Text);
+                        jsonDict["amount"] = int.Parse(EditWaterIntake.Text);
                         jsonHelper.jsonWrite(jsonDict);
                         Console.WriteLine(jsonDict.Values);
                     })); 
@@ -51,7 +50,36 @@ namespace Drink_Enough
 
                 PresentViewController(alertController, true, null);
                 #endregion
-            }            
+            }
+
+            //show alertview when third cell is pressed to adjust weight
+            if (indexPath.Section == 0 && indexPath.Row == 2)
+            {
+                #region AlertDialog mit UIAlertController
+
+                UIAlertController alertController = UIAlertController.Create("Change your weight", "Please enter your weight below (kg)", UIAlertControllerStyle.Alert);
+                UITextField EditWeight = null;
+
+                alertController.AddTextField(EditWeightTxt =>
+                {
+                    EditWeight = EditWeightTxt;
+                    jsonDict = jsonHelper.jsonGetAllData();
+                    EditWeight.Text = jsonDict["weight"].ToString();
+                });
+
+                alertController.AddAction(UIAlertAction.Create("Update",
+                    UIAlertActionStyle.Default,
+                    onClick =>
+                    {
+                        jsonDict["weight"] = int.Parse(EditWeight.Text);
+                        jsonHelper.jsonWrite(jsonDict);
+                        Console.WriteLine(jsonDict.Values);
+                    }));
+                alertController.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, null));
+
+                PresentViewController(alertController, true, null);
+                #endregion
+            }
         }
     }
 }

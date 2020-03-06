@@ -166,6 +166,7 @@
       <DependentUpon>SettingsTableViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="TableSource.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="WaterCalcViewController.cs" />
     <Compile Include="WaterCalcViewController.designer.cs">
       <DependentUpon>WaterCalcViewController.cs</DependentUpon>

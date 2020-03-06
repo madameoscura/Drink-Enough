@@ -8,10 +8,13 @@ namespace Drink_Enough
 {
     public partial class WaterIntakeViewController : UIViewController
     {
+        DBHelper DBHelper = new DBHelper();
         JsonHelper jsonHelper = new JsonHelper();
+        Utility utility = new Utility();
         Dictionary<string, int> jsonDict;
         private int amountDrank;
         private int amountToDrink;
+        Drink drink = new Drink();
 
         public WaterIntakeViewController (IntPtr handle) : base (handle)
         {
@@ -20,11 +23,16 @@ namespace Drink_Enough
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            //Changes for HistoryVC           
+            drink = utility.compareObjects(DBHelper.getLastDrink());
 
-           jsonDict = jsonHelper.jsonGetAllData();
-           WaterOutputLabel.Text = jsonDict["amount"].ToString() + " ml";
+
+
+            jsonDict = jsonHelper.jsonGetAllData();
+            WaterOutputLabel.Text = jsonDict["amount"].ToString() + " ml";
             DrinkTxtInput.SelectedTextRange = null;
 
+            //set up PickerView to choose drinks
             PickerDataModel<int> waterModel = new PickerDataModel<int>
             {
                 Items =
@@ -66,40 +74,40 @@ namespace Drink_Enough
             amountDrank = 0;
           
             var spacer = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace);
+
+            //what should happen if doneButton is pressed
             var doneButton = new UIBarButtonItem(UIBarButtonSystemItem.Done, (sender, args) =>
             {
-            amountDrank += waterModel.SelectedItem.Value;
-            if (jsonDict["amount"] >= amountDrank)
-            {
+                 amountDrank += waterModel.SelectedItem.Value;
+                if (jsonDict["amount"] >= amountDrank)
+                {
                 amountToDrink = jsonDict["amount"] - amountDrank;
-            }
-            else
-            {
+                }
+                else
+                {
                 amountToDrink = 0;
-            }
-            Console.WriteLine(amountDrank.ToString());
-            Console.WriteLine(amountToDrink.ToString());
-            Console.WriteLine(((View.Bounds.Height - NavBar.Bounds.Height) * amountToDrink / jsonDict["amount"]).ToString());
+                }
+
+                //Changes for HistoryVC
+                drink.AmountDrank = amountDrank;
+                DBHelper.updateDrink(drink);
+
+                Console.WriteLine(amountDrank.ToString());
+                Console.WriteLine(amountToDrink.ToString());
+                Console.WriteLine(((View.Bounds.Height - NavBar.Bounds.Height) * amountToDrink / jsonDict["amount"]).ToString());
 
                 DrinkTxtInput.ResignFirstResponder();
                 waterView.TopAnchor.ConstraintEqualTo(NavBar.BottomAnchor, (View.Bounds.Height - NavBar.Bounds.Height)
                     * amountToDrink / jsonDict["amount"]).Active = true;
                 
-                // if (int.Parse(WaterOutputLabel.Text) - waterModel.SelectedItem.Value <= 0)
                 if (amountToDrink <= 0)
                 {
                         GoalReachedOutputLabel.Text = $"I reached my goal of {jsonDict["amount"]} ml! Total amount I drank today:";
-                        // WaterOutputLabel.Text = (jsonDict["amount"] + waterModel.SelectedItem.Value).ToString();
                         WaterOutputLabel.Text = (amountDrank).ToString() + " ml";
-                    var alert = UIAlertController.Create("Congratulations", "You reached your daily drinking goal!", UIAlertControllerStyle.Alert);
+                        var alert = UIAlertController.Create("Congratulations", "You reached your daily drinking goal!", UIAlertControllerStyle.Alert);
                         alert.AddAction(UIAlertAction.Create("I am a champion", UIAlertActionStyle.Default, null));
                         PresentViewController(alert, true, null);
-                }
-              /*  else if (jsonDict["amount"] < int.Parse(WaterOutputLabel.Text))
-                {
-                    GoalReachedOutputLabel.Text = $"I reached my goal of {jsonDict["amount"]} ml! Total amount I drank today:";
-                    WaterOutputLabel.Text = Convert.ToString(int.Parse(WaterOutputLabel.Text) + waterModel.SelectedItem.Value);
-                }     */          
+                }                     
                 else 
                 {
                   WaterOutputLabel.Text = Convert.ToString(amountToDrink) + " ml";
@@ -114,8 +122,16 @@ namespace Drink_Enough
         {
             base.ViewWillAppear(animated);
 
+            //reload data when view appears again
             jsonDict = jsonHelper.jsonGetAllData();
-            WaterOutputLabel.Text = (jsonDict["amount"] - amountDrank).ToString() + " ml";
+
+            if (amountDrank < jsonDict["amount"])
+            {
+                WaterOutputLabel.Text = (jsonDict["amount"] - amountDrank).ToString() + " ml";
+            } else
+            {
+                WaterOutputLabel.Text = amountDrank.ToString() + " ml";
+            }             
         }
     }    
 }

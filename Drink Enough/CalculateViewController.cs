@@ -22,10 +22,10 @@ namespace Drink_Enough
         {
             base.ViewDidLoad();
 
-            //jsonHelper.jsonWrite(int.Parse(userWeightInKg));
             calculatedAmount = Convert.ToString(int.Parse(userWeightInKg) * mlToDrinkPerKg);
             WaterTxtInput.Text = calculatedAmount + " ml";
 
+            //Add observer to include "ml" behind numbers inserted
             NSNotificationCenter.DefaultCenter.AddObserver(
             UITextField.TextDidBeginEditingNotification, (notification) => {
              var indexToSet = WaterTxtInput.Text.Length - 3;
@@ -34,8 +34,8 @@ namespace Drink_Enough
             });
 
             NSNotificationCenter.DefaultCenter.AddObserver(
-           UITextField.TextFieldTextDidChangeNotification, (notification) =>
-           {
+            UITextField.TextFieldTextDidChangeNotification, (notification) =>
+            {
                if (!string.IsNullOrEmpty(WaterTxtInput.Text) && WaterTxtInput.Text.Length > 1)
                {
                    if (WaterTxtInput.Text.Substring(WaterTxtInput.Text.Length - 2) == "ml")
@@ -51,15 +51,14 @@ namespace Drink_Enough
                var positionToSet = WaterTxtInput.GetPosition(WaterTxtInput.BeginningOfDocument, indexToSet);
                WaterTxtInput.SelectedTextRange = WaterTxtInput.GetTextRange(positionToSet, positionToSet);
 
-           });
+            });
             
             DoneButton.TouchUpInside += DoneButton_TouchUpInside;
         }
 
+        //What should happen when done Button is pressed
         private void DoneButton_TouchUpInside(object sender, EventArgs e)
         {
-            
-          //  finalAmountToDrink = int.Parse(WaterTxtInput.Text);
             finalAmountToDrink = int.Parse(WaterTxtInput.Text.Remove(WaterTxtInput.Text.Length - 3, 3));
             jsonDict["amount"] = finalAmountToDrink;
             jsonDict["weight"] = int.Parse(userWeightInKg);

@@ -28,7 +28,7 @@ namespace Drink_Enough
             }
 
             cell.TextLabel.Text = drinkList[indexPath.Row].AmountDrank.ToString();
-            cell.DetailTextLabel.Text = drinkList[indexPath.Row].CreateDate.ToString("dd.MM.yyyy - hh:mm");
+            cell.DetailTextLabel.Text = drinkList[indexPath.Row].CreateDate.ToString();
 
             return cell;
         }

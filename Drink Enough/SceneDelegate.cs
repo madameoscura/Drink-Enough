@@ -12,7 +12,8 @@ namespace NewSingleViewTemplate {
 		[Export ("scene:willConnectToSession:options:")]
 		public void WillConnect (UIScene scene, UISceneSession session, UISceneConnectionOptions connectionOptions)
 		{
-			/* var IsFirsttime = NSUserDefaults.StandardUserDefaults.BoolForKey("IsFirsttime");
+			//make WeightVC first VC only if app loaded for the first time
+			var IsFirsttime = NSUserDefaults.StandardUserDefaults.BoolForKey("IsFirsttime");
 			if (!IsFirsttime)
 			{
 				Window.RootViewController = UIStoryboard.FromName("Main", null).InstantiateViewController("WeightVC");
@@ -20,8 +21,8 @@ namespace NewSingleViewTemplate {
 			}
 			else
 			{
-				// Start from the default initialized view controller
-			} */
+				// Start from the default initialized view controller, which is WaterIntakeVC
+			} 
 		}
 
 		[Export ("sceneDidDisconnect:")]

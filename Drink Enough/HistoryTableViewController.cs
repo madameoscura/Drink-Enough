@@ -19,6 +19,7 @@ namespace Drink_Enough
             base.ViewDidLoad();
             drinkList = dBHelper.getAllDrinks();
             HistoryTableView.Source = new TableSource(drinkList, this);
+            HistoryTableView.ReloadData();
         }
     }
 }
