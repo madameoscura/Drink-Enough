@@ -10,7 +10,7 @@ namespace Drink_Enough
 
         DBHelper dbHelper = new DBHelper();
         JsonHelper jsonHelper = new JsonHelper();
-        Dictionary<string, int> jsonDict;
+       // Dictionary<string, int> jsonDict;
         public WeightViewController (IntPtr handle) : base (handle)
         {
         }

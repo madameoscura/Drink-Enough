@@ -24,7 +24,7 @@ namespace Drink_Enough
         }
 
         //überladener Konstruktor
-        //wird genutzt wenn Task hinzugefügt wird
+        //wird genutzt wenn Drink hinzugefügt wird
         public Drink(int weight, int goal, int amountDrank)
         {
             this.Weight = weight;

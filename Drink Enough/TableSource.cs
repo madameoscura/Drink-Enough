@@ -12,6 +12,8 @@ namespace Drink_Enough
     {
         List<Drink> drinkList = new List<Drink>();
         string CellIdentifier = "TableCell";
+        JsonHelper jsonHelper = new JsonHelper();
+        Dictionary<string, int> jsonDict;
         HistoryTableViewController viewController;
 
         public TableSource(List<Drink> drinkList, HistoryTableViewController viewController)
@@ -27,8 +29,21 @@ namespace Drink_Enough
                 cell = new UITableViewCell(UITableViewCellStyle.Subtitle, CellIdentifier);
             }
 
-            cell.TextLabel.Text = drinkList[indexPath.Row].AmountDrank.ToString();
+            cell.TextLabel.Text = drinkList[indexPath.Row].AmountDrank.ToString() + " ml";
             cell.DetailTextLabel.Text = drinkList[indexPath.Row].CreateDate.ToString();
+
+            jsonDict = jsonHelper.jsonGetAllData();
+
+            if (drinkList[indexPath.Row].AmountDrank >= jsonDict["amount"])
+            {
+                cell.BackgroundColor = UIColor.FromRGB(190, 235, 233);
+                cell.Accessory = UITableViewCellAccessory.Checkmark;
+             //   UIImageView trophyImage = new UIImageView(UIImage.FromBundle("trophy.png"));
+             //   cell.AccessoryView = trophyImage;
+            } else
+            {
+                cell.BackgroundColor = UIColor.FromRGB(220,220,220);
+            } 
 
             return cell;
         }
