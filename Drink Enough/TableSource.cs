@@ -30,7 +30,7 @@ namespace Drink_Enough
             }
 
             cell.TextLabel.Text = drinkList[indexPath.Row].AmountDrank.ToString() + " ml";
-            cell.DetailTextLabel.Text = drinkList[indexPath.Row].CreateDate.ToString();
+            cell.DetailTextLabel.Text = drinkList[indexPath.Row].CreateDate.ToString("dd.MM.yyyy");
 
             jsonDict = jsonHelper.jsonGetAllData();
 
