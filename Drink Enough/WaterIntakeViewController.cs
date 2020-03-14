@@ -30,7 +30,7 @@ namespace Drink_Enough
 
 
             jsonDict = jsonHelper.jsonGetAllData();
-            WaterOutputLabel.Text = jsonDict["amount"].ToString() + " ml";
+            WaterOutputLabel.Text = (jsonDict["amount"] - drink.AmountDrank).ToString() + " ml";
             DrinkTxtInput.SelectedTextRange = null;
 
             //set up PickerView to choose drinks
@@ -72,7 +72,7 @@ namespace Drink_Enough
                 Translucent = true
             };
 
-            amountDrank = 0;
+            amountDrank = drink.AmountDrank;
           
             var spacer = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace);
 
@@ -111,7 +111,8 @@ namespace Drink_Enough
                 }                     
                 else 
                 {
-                  WaterOutputLabel.Text = Convert.ToString(amountToDrink) + " ml";
+                    GoalReachedOutputLabel.Text = "Today I still have to drink:";
+                    WaterOutputLabel.Text = Convert.ToString(amountToDrink) + " ml";
                 }
             });
             toolbar.SetItems(new[] { spacer, doneButton }, true);
@@ -128,9 +129,11 @@ namespace Drink_Enough
 
             if (amountDrank < jsonDict["amount"])
             {
-                WaterOutputLabel.Text = (jsonDict["amount"] - amountDrank).ToString() + " ml";
+                GoalReachedOutputLabel.Text = "Today I still have to drink:";
+                WaterOutputLabel.Text = (jsonDict["amount"] - drink.AmountDrank).ToString() + " ml";
             } else
             {
+                GoalReachedOutputLabel.Text = $"I reached my goal of {jsonDict["amount"]} ml! Total amount I drank today:";
                 WaterOutputLabel.Text = amountDrank.ToString() + " ml";
             }             
         }
